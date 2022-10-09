@@ -1,7 +1,8 @@
 var task = $(".task");
 var button = $("button");
-var hourFormEl = $("hour");
+var calendarFormEl = $("calendar");
 var hourLabel = $(".label");
+var label = $(".time");
 
 //Current date
 var $currentDay = $("#currentDay");
@@ -12,19 +13,34 @@ $currentDay.text(currentDateTime.format("MMM Do, YYYY"));
 
 
 //Current time
+// function currentHourLog()
 var currentHour = parseInt(currentDateTime.format("h"));
 console.log(currentHour)
-if(currentHour == hourLabel){
-    $(".task").addClass("present")
+
+// if(currentHour == hourLabel){
+//     $(".task").addClass("present")
+// }
+// else {
+//     if (currentHour < hourLabel)
+//     $(".task").addClass("past")
+// else (currentHour > hourLabel)
+//     $(".task").addClass("future")
+// }
+
+var times = [9, 10, 11, 12, 1, 2, 3, 4, 5];
+for (var i = 0; i < times.length; i++) {
+var timesEl = $("time"); 
+timesEl.text(times[i]);
+timesEl.addClass(".hour")
+calendarFormEl.append(timesEl);
+
 }
-else {
-    (currentHour < hourLabel)
-    $(".task").addClass("past")
-}
-else {
-    (currentHour > hourLabel)
-    $(".task").addClass("future")
-}
+
+
+
+
+
+
 
 
 
@@ -62,4 +78,3 @@ else {
 //     alert(localStorage.getItem('task'));
 
 // });
-
