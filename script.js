@@ -1,7 +1,7 @@
 var task = $(".task");
 var button = $("button");
 var hourLabel = $("#label");
-var saveBtn = $("#saveBtn");
+var button = $("button");
 var times = [9, 10, 11, 12, 1, 2, 3, 4, 5];
 
 //Current date
@@ -35,5 +35,5 @@ localStorage.setItem("task", taskInput);
 localStorage.getItem("task");
 }
 
-$("saveBtn").click(saveTasks);
+$("button").click(saveTasks);
 
