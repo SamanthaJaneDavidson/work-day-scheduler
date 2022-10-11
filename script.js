@@ -12,7 +12,7 @@ $currentDay.text(currentDateTime.format("MMM Do, YYYY"));
 
 
 //Display hour and current time 
-var currentHour = parseInt(currentDateTime.format("h"));
+var currentHour = (currentDateTime.format("h"));
 console.log(currentHour)
 
 if(currentHour == hourLabel){
@@ -27,11 +27,10 @@ else {
 }
 
 
-
 //Save tasks
 function saveTasks (){
     event.preventDefault()
-var taskInput = $("#task").text();
+var taskInput = $(".task").text();
 localStorage.setItem("task", taskInput);
 localStorage.getItem("task");
 }
