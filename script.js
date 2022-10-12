@@ -1,7 +1,6 @@
 var task = $(".task");
-var button = $("button");
-var hourLabel = $("#label");
-var button = $("button");
+var saveBtn = $(".saveBtn");
+var hourLabel = $(".time");
 var times = [9, 10, 11, 12, 1, 2, 3, 4, 5];
 
 //Current date
@@ -12,28 +11,38 @@ $currentDay.text(currentDateTime.format("MMM Do, YYYY"));
 
 
 //Display hour and current time 
-var currentHour = (currentDateTime.format("h"));
+var currentHour = (currentDateTime.hour());
 console.log(currentHour)
+console.log(hourLabel[1].id);
 
-if(currentHour == hourLabel){
-    $(task).addClass("present")
+for(i = 0; i < hourLabel.length; i++){
+console.log(currentHour > hourLabel[i])
+console.log(task[i])
+
+if(currentHour == hourLabel[i].id){
+    task[i].classList.add("present")
 }
-else {
-    if (currentHour < hourLabel)
-    $(task).addClass("past")
+else if (currentHour > hourLabel[i].id){
+    task[i].classList.add("past")}
 
-    else (currentHour > hourLabel)
-    $(task).addClass("future")
+    else if (currentHour < hourLabel[i].id){
+    task[i].classList.add("future")}
 }
 
 
 //Save tasks
-function saveTasks (){
+function saveTasks (event){
+    console.log(this.value)
+
     event.preventDefault()
-var taskInput = $(".task").text();
-localStorage.setItem("task", taskInput);
-localStorage.getItem("task");
+var taskInput = $(`#input-${this.value}`).val();
+localStorage.setItem(`task-${this.value}`, taskInput);
 }
 
-$("button").click(saveTasks);
+
+for(i = 9; i < 18; i++){
+$(`#input-${i}`).val(localStorage.getItem(`task-${i}`))
+}
+
+$(".saveBtn").click(saveTasks);
 
